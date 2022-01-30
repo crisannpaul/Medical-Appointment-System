@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/appointment")
 public class AppointmentController {
 
@@ -49,7 +50,7 @@ public class AppointmentController {
     ) {
         // check availability
         if (!checkAppointmentAvailability(schedule))
-            return "Specified schedule unavailable";
+            return "Specified schedule unavailable.";
 
         // create appointment object with parameter client id and generate default for rest
         var appointment = new Appointment();

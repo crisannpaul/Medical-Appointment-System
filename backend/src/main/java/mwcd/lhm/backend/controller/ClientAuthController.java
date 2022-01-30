@@ -3,14 +3,12 @@ package mwcd.lhm.backend.controller;
 import mwcd.lhm.backend.model.Client;
 import mwcd.lhm.backend.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/client/auth")
 public class ClientAuthController {
 
@@ -43,7 +41,7 @@ public class ClientAuthController {
     }
 
     @PostMapping("/login")
-    public Client login(
+    public Client loginClient(
             @RequestParam String email,
             @RequestParam String password
     ) {
