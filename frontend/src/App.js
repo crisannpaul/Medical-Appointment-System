@@ -1,43 +1,39 @@
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  // Link,
 } from "react-router-dom";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Navigation from "./components/Navigation";
-
 import Home from "./pages/Home";
-// auth
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-// appointment
-import AllAppointments from "./pages/appointment/AllAppointments";
 import BookAppointment from "./pages/appointment/BookAppointment";
-import ViewAppointment from "./pages/appointment/ViewAppointment";
-// profile
-import AllClients from "./pages/profile/AllClients";
+import MyAppointments from "./pages/appointment/MyAppointments";
 import ViewClient from "./pages/profile/ViewClient";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Navigation/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        {/* appointment */}
-        <Route path="/all_appointments" element={<AllAppointments/>}/>
-        <Route path="/book_appointment" element={<BookAppointment/>}/>
-        <Route path="/view_appointment" element={<ViewAppointment/>}/>
-        {/* auth */}
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register/>}/>
-        {/* profile */}
-        <Route path="/all_clients" element={<AllClients/>}/>
-        <Route path="/view_client" element={<ViewClient/>}/>
-      </Routes>
+      <div style={{margin: 40, display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <div style={{width: 750}}>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            {/* appointment */}
+            <Route path="/my_appointments" element={<MyAppointments/>}/>
+            <Route path="/book_appointment" element={<BookAppointment/>}/>
+            {/* auth */}
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            {/* profile */}
+            <Route path="/view_client" element={<ViewClient/>}/>
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }

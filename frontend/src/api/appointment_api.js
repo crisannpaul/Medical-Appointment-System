@@ -8,12 +8,6 @@ export const getAppointments = async () => {
   return res.data;
 }
 
-export const findAppointmentById = async (id) => {
-  // awaiting response and returning the payload
-  const res = await API.get(`${APPOINTMENT_PATH}/view/${id}`);
-  return res.data;
-}
-
 export const checkAppointmentAvailability = async (date) => {
   // awaiting response and returning the payload
   const res = await API.get(`${APPOINTMENT_PATH}/availability?schedule=${date}`);

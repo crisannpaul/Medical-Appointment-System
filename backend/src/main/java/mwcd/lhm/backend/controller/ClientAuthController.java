@@ -25,7 +25,7 @@ public class ClientAuthController {
         // check if email already registered
         List<Client> matches = clientRepository.findClientByEmail(email);
         if (matches.size() > 0)
-            return "Email already exists.";
+            return "Email already exists. Please login.";
 
         // create client object with parameter details
         var client = new Client();
@@ -37,7 +37,7 @@ public class ClientAuthController {
         // add client object to database
         clientRepository.save(client);
 
-        return "You have been registered.";
+        return "You have been registered. Please login.";
     }
 
     @PostMapping("/login")

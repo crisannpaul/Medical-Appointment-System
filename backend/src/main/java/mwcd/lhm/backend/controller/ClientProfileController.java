@@ -31,7 +31,6 @@ public class ClientProfileController {
             @PathVariable Integer id,
             // updates are provided as request params
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) String email,
             @RequestParam(required = false) String password,
             @RequestParam(required = false) String record
     ) {
@@ -40,7 +39,6 @@ public class ClientProfileController {
 
         // updating client details based on non-null passed parameters
         client.setName(Objects.requireNonNullElse(name, client.getName()));
-        client.setEmail(Objects.requireNonNullElse(email, client.getEmail()));
         client.setPassword(Objects.requireNonNullElse(password, client.getPassword()));
         client.setRecord(Objects.requireNonNullElse(record, client.getRecord()));
 

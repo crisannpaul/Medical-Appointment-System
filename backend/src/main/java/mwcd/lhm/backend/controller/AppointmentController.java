@@ -44,13 +44,13 @@ public class AppointmentController {
     }
 
     @PostMapping("/book")
-    public String bookAppointment(
+    public boolean bookAppointment(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime schedule,
             @RequestParam Integer clientId
     ) {
         // check availability
         if (!checkAppointmentAvailability(schedule))
-            return "Specified schedule unavailable.";
+            return Boolean.FALSE;
 
         // create appointment object with parameter client id and generate default for rest
         var appointment = new Appointment();
@@ -62,7 +62,7 @@ public class AppointmentController {
         // add appointment object to database
         appointmentRepository.save(appointment);
 
-        return "Appointment successful booked.";
+        return Boolean.TRUE;
     }
 
     @PatchMapping("/conclude/{id}")
