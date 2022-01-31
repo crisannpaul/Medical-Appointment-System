@@ -17,7 +17,7 @@ public class BackendApplication {
         SpringApplication.run(BackendApplication.class, args);
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/info")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
 
         String message = "Hello World!";
