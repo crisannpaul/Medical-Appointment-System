@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @SpringBootApplication
 @RestController
 public class BackendApplication {
@@ -16,7 +19,15 @@ public class BackendApplication {
 
     @GetMapping("/hello")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+
+        String message = "Hello World!";
+        try {
+            InetAddress ip = InetAddress.getLocalHost();
+            message += " From host: " + ip;
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        return message;
     }
 
 }
