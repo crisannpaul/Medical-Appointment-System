@@ -5,8 +5,6 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import {Button, Col, Form, Row, Stack} from "react-bootstrap";
-import {updateClientById} from "../../api/client_profile_api";
-import {loginClient} from "../../api/client_auth_api";
 import {bookAppointment, checkAppointmentAvailability} from "../../api/appointment_api";
 
 const BookAppointment = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {loginClient, registerClient} from "../../api/client_auth_api";
+import {registerClient} from "../../api/client_auth_api";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
@@ -55,7 +55,7 @@ const Register = () => {
       <h1>
         Account Registration
       </h1>
-      <br />
+      <br/>
 
       <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
         <Form.Label column sm={3}>

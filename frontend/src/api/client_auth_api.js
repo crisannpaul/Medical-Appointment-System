@@ -21,6 +21,8 @@ export const loginClient = async (email, password) => {
   params.append('email', email);
   params.append('password', password);
 
+  console.log(`${CLIENT_AUTH_PATH}/login`);
+
   // awaiting response and returning the payload
   const res = await API.post(`${CLIENT_AUTH_PATH}/login`, params);
   return res.data;
