@@ -38,9 +38,9 @@ The frontend is setup with Firebase which hosts the contents of the /build/ fold
 
 
 <p align="center">
-  <img width="450" src="https://user-images.githubusercontent.com/26774196/152202496-fd3f2436-53b6-466e-9a31-c79f1c680168.png">
+  <img width="800" src="https://user-images.githubusercontent.com/26774196/152202496-fd3f2436-53b6-466e-9a31-c79f1c680168.png">
 
-  <img width="450" src="https://user-images.githubusercontent.com/26774196/152202558-fc2bb40e-efd0-45d0-b43f-e10952a95a57.png">
+  <img width="800" src="https://user-images.githubusercontent.com/26774196/152202558-fc2bb40e-efd0-45d0-b43f-e10952a95a57.png">
   
   <img width="800" src="https://user-images.githubusercontent.com/26774196/152202547-7152b0d0-b3ec-4f2b-b4b1-ac08969a3063.png">
 </p>
