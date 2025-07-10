@@ -5,56 +5,52 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.time.Instant;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 @Entity
-@SequenceGenerator(name="APPOINTMENT_SEQ", sequenceName="appointment_sequence")
+@Table(
+        name = "appointments",
+        uniqueConstraints = @UniqueConstraint(           // ← now matches the FK name
+                name = "uniq_doctor_start",
+                columnNames = {"doctor_id", "start_at"}
+        ))
 public class Appointment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="APPOINTMENT_SEQ")
-    private Integer id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Integer clientId;
-    private LocalDateTime schedule;
-    private boolean occurred;
-    private String notes;
+    /** Who the appointment is for */
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "client_id",                   // do the same for client
+            referencedColumnName = "id")
+    private Client client;
 
-    public Integer getId() {
-        return id;
-    }
+    /** Which doctor */
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "doctor_id",                   // <<— explicit column name
+            referencedColumnName = "id")
+    private Doctor doctor;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    /** Start time (use end_at or duration if you need) */
+    @Column(name = "start_at", nullable = false)
+    private Instant startAt;
 
-    public Integer getClientId() {
-        return clientId;
-    }
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Instant createdAt = Instant.now();
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
-    }
+    /** Derived in code if you prefer; stored for speed */
+    private boolean isFirst;
 
-    public LocalDateTime getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(LocalDateTime schedule) {
-        this.schedule = schedule;
-    }
-
-    public boolean isOccurred() {
-        return occurred;
-    }
-
-    public void setOccurred(boolean occurred) {
-        this.occurred = occurred;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.BOOKED;
 }

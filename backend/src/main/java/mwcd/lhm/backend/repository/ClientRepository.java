@@ -1,16 +1,10 @@
 package mwcd.lhm.backend.repository;
 
 import mwcd.lhm.backend.model.Client;
-import org.springframework.data.repository.CrudRepository;
-
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClientRepository extends CrudRepository<Client, Long> {
+public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    Client findClientById(Integer id);
-
-    List<Client> findClientByEmail(String email);
-
-    List<Client> findClientByEmailAndPassword(String email, String password);
-
+    List<Client> findByMentionsContainingIgnoreCase(String phrase);
 }

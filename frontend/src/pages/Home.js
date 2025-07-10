@@ -1,15 +1,14 @@
-import React from 'react';
+// src/pages/Home.js   (or wherever the file lives)
+import React from "react";
+import ContactInfo from "../components/ContactInfo";
+import AvailabilityChecker from "../components/AvailabilityChecker";
 
-const Home = () => {
-  return (
+const Home = () => (
     <div>
-      <h1>Welcome</h1>
-      <p>This is the LH Medical booking site.  Register or login and book an appointment today!</p>
-      <div style={{display: "grid", height: "100%"}}>
-        <img style={{maxWidth: "100%", maxHeight: "100vh", margin: "auto"}} src="nci.jpg" alt=""/>
-      </div>
+        <h1>Kio Energy SRL</h1>
+        <ContactInfo />
+        <AvailabilityChecker/>
     </div>
-  );
-}
+);
 
 export default Home;
