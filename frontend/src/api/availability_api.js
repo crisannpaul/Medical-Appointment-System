@@ -1,8 +1,8 @@
 // src/api/availability_api.js
-import { http } from "./api";
+import http from "./http";
 
 export async function isSlotFree(doctorId, isoDateTime) {
-    const r = await http.get("/api/appointments/available", {
+    const r = await http.get("/appointments/available", {
         params: { doctorId, dateTime: isoDateTime },
     });
 

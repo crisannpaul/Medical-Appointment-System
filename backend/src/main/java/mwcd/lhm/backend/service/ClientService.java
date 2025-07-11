@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import mwcd.lhm.backend.model.Client;
 import mwcd.lhm.backend.repository.ClientRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@ import mwcd.lhm.backend.model.Doctor;
 import mwcd.lhm.backend.model.Status;
 import mwcd.lhm.backend.repository.AppointmentRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import jakarta.transaction.Transactional;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

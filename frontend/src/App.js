@@ -10,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
+import Login from "./pages/auth/Login";
 // import Login from "./pages/auth/Login";
 // import Register from "./pages/auth/Register";
 // import BookAppointment from "./pages/appointment/BookAppointment";
@@ -23,8 +24,10 @@ const App = () => {
       <div style={{margin: 40, display: "flex", alignItems: "center", justifyContent: "center"}}>
         <div style={{width: 750}}>
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            {/* appointment */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Home/>}/>
+
+              {/* appointment */}
             {/*<Route path="/my_appointments" element={<MyAppointments/>}/>*/}
             {/*<Route path="/book_appointment" element={<BookAppointment/>}/>*/}
             {/* auth */}
@@ -32,6 +35,7 @@ const App = () => {
             {/*<Route path="/register" element={<Register/>}/>*/}
             {/* profile */}
             {/*<Route path="/view_client" element={<ViewClient/>}/>*/}
+            {/*  <Route path="*" element={<NotFound />} />*/}
           </Routes>
         </div>
       </div>

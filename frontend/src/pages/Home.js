@@ -5,9 +5,8 @@ import AvailabilityChecker from "../components/AvailabilityChecker";
 
 const Home = () => (
     <div>
-        <h1>Kio Energy SRL</h1>
-        <ContactInfo />
         <AvailabilityChecker/>
+        <ContactInfo />
     </div>
 );
 

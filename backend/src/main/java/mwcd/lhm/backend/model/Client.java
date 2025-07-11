@@ -1,12 +1,12 @@
 package mwcd.lhm.backend.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @NoArgsConstructor

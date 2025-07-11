@@ -3,7 +3,7 @@ package mwcd.lhm.backend.model;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.Instant;
 
 @Data

@@ -1,15 +1,11 @@
 package mwcd.lhm.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
 import java.time.Instant;
 
 @Data
