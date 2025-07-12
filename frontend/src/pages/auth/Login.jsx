@@ -1,22 +1,30 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "../api/auth_api";
+import { useNavigate, useLocation } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
+import { login as apiLogin } from "../../api/auth_api";
+import {useAuth} from "../../auth/AuthContext";
 
 const Login = () => {
     const nav = useNavigate();
-    const [username, setU] = useState("");
-    const [password, setP] = useState("");
+    const loc = useLocation();
+    const { login, homeForRole } = useAuth();
+
+    const [u, setU] = useState("");
+    const [p, setP] = useState("");
     const [err, setErr] = useState("");
 
     async function submit(e) {
         e.preventDefault();
         setErr("");
         try {
-            await login(username, password);
-            console.log("succ");
-            // nav("/");                         // go home
+            const tok = await apiLogin(u, p);   // modify auth_api below
+            login(tok);
+
+            // redirect: back to intended page OR role home
+            const dest = loc.state?.from?.pathname || homeForRole(jwtDecode(tok).role);
+            nav(dest, { replace: true });
         } catch {
-            setErr("Invalid username or password");
+            setErr("Invalid credentials");
         }
     }
 
@@ -27,7 +35,7 @@ const Login = () => {
             <label>
                 Username
                 <input
-                    value={username}
+                    value={u}
                     onChange={(e) => setU(e.target.value)}
                     required
                 />
@@ -37,7 +45,7 @@ const Login = () => {
                 Password
                 <input
                     type="password"
-                    value={password}
+                    value={p}
                     onChange={(e) => setP(e.target.value)}
                     required
                 />

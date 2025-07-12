@@ -1,13 +1,10 @@
-import jwtDecode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import http from "./http";
 
 /* ---------- login / logout ---------- */
 export async function login(username, password) {
     const res = await http.post("/auth/login", { username, password });
-    const token = res.data.token;
-
-    localStorage.setItem("jwt", token);
-    http.defaults.headers.common.Authorization = `Bearer ${token}`;
+    return res.data.token;         // just return token, context handles storage
 }
 
 export function logout() {

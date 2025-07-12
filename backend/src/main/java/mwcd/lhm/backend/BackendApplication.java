@@ -53,7 +53,7 @@ public class BackendApplication {
             PrivilegedUser receptionist = PrivilegedUser.builder()
                     .username("recept")
                     .phoneNumber("555-1111")
-                    .password("{noop}pass")
+                    .password(encoder.encode("recept123"))
                     .role(Role.RECEPTIONIST)
                     .build();
 

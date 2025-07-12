@@ -11,6 +11,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
+import {RequireAuth} from "./auth/RequireAuth";
+import ReceptionistBookingPage from "./pages/ReceptionistBookingPage";
+import {RequireRole} from "./auth/RequireRole";
 // import Login from "./pages/auth/Login";
 // import Register from "./pages/auth/Register";
 // import BookAppointment from "./pages/appointment/BookAppointment";
@@ -26,7 +29,16 @@ const App = () => {
           <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/" element={<Home/>}/>
-
+              <Route
+                  path="/recept/book"
+                  element={
+                      <RequireAuth>
+                          <RequireRole role="RECEPTIONIST">
+                              <ReceptionistBookingPage />
+                          </RequireRole>
+                      </RequireAuth>
+                  }
+              />
               {/* appointment */}
             {/*<Route path="/my_appointments" element={<MyAppointments/>}/>*/}
             {/*<Route path="/book_appointment" element={<BookAppointment/>}/>*/}
